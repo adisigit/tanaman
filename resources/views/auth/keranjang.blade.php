@@ -6,9 +6,9 @@
                 <div>
                     <input type="checkbox" name="" id="produkCheckbox" value="{{ $produk->id }}">
                 </div>
-                <div class="col-span-2">
+                <div class="col-span-6">
                     <a href="{{ route('produk.show', $produk->id) }}">
-                        <div class="grid grid-cols-2 gap-4 items-center">
+                        <div class="grid grid-cols-9 gap-4 items-center">
                             <img class="size-30" src="https://k1-toko-tanaman.s3.ap-southeast-1.amazonaws.com/{{ $produk->gambar_path }}"
                                 alt="">
                             <div>
@@ -19,7 +19,6 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-span-4"></div>
                 <div>
                     @livewire('counter', ['id_produk' => $produk->id])
                 </div>

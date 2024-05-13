@@ -1,13 +1,13 @@
 <x-app-layout title="Detail">
     <div class="p-8">
-        <div class="grid grid-cols-2 gap-4 p-8 shadow-md bg-white rounded-md">
+        <div class="grid grid-cols-4 gap-4 p-8 shadow-md bg-white rounded-md">
             <div class="size-80">
                 @if (isset($produk->no_gambar))
                     <img src="https://k1-toko-tanaman.s3.ap-southeast-1.amazonaws.com/{{ $produk->gambar_path }}"
                         alt="">
                 @endif
             </div>
-            <div>
+            <div class="col-span-3">
                 <div>
                     <h3>{{ $produk->nama }}</h3>
                     <p>{{ $produk->harga }}</p>
