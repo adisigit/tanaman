@@ -68,11 +68,12 @@ class BuyController extends Controller
                         'id_produk' => $keranjang->id_produk,
                         'banyak' => $keranjang->banyak,
                         'total' => $produk->harga * $keranjang->banyak,
-                        'id_pelanggan' => 1
+                        'id_pelanggan' => $id
                     ]);
-                    Keranjang::where('id_produk', $keranjang->id_produk)->where('id_pelanggan', 1)->delete();
+                    Keranjang::where('id_produk', $keranjang->id_produk)->where('id_pelanggan', $id)->delete();
                 }
             }
         }
+        return redirect()->route('riwayat.index');
     }
 }

@@ -29,6 +29,9 @@
                             <x-nav-link :href="route('keranjang.index')" class="text-gray-800">
                                 {{ __('Keranjang') }}
                             </x-nav-link>
+                            <x-nav-link :href="route('riwayat.index')" class="text-gray-800">
+                                {{ __('Riwayat') }}
+                            </x-nav-link>
                         @endif
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -115,6 +118,9 @@
                     <!-- Regular User Navigation Links -->
                     <x-nav-link :href="route('keranjang.index')" class="text-gray-800">
                         {{ __('Keranjang') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('riwayat.index')" class="text-gray-800">
+                        {{ __('Riwayat') }}
                     </x-nav-link>
                 @endif
 

@@ -5,7 +5,7 @@
             @foreach ($produks as $produk)
                 <div class="shadow-md bg-white rounded-md p-8 grid grid-cols-8 gap-4 place-items-center">
                     <div>
-                        <input type="checkbox" class="produkCheckbox" value="{{ $produk->id }}">
+                        <input type="checkbox" name="" id="produkCheckbox" value="{{ $produk->id }}">
                     </div>
                     <div class="col-span-0">
                         <a href="{{ route('produk.show', $produk->id) }}" class="flex items-center space-x-4">
