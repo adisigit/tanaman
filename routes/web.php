@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RiwayatController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -21,7 +22,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/keranjang', [KeranjangController::class, 'destroy'])->name('keranjang.destroy');
     Route::post('/buy', [BuyController::class, 'index'])->name('buy.index');
     Route::get('/buy', [BuyController::class, 'index'])->name('buy.index');
-    Route::post('/nota', [BuyController::class, 'store'])->name('buy.store');
+    Route::post('/riwayat', [BuyController::class, 'store'])->name('buy.store');
+    Route::get('/riwayat', [RiwayatController::class, 'index'])->name('riwayat.index');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {

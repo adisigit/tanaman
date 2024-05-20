@@ -1,36 +1,47 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 shadow">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
+            <!-- Logo and Title -->
+            <div class="flex items-center">
+                <a href="{{ route('home.index') }}" class="flex items-center">
+                    <!-- <img src="/path/to/logo.png" alt="Logo" class="h-8 w-8 mr-2"> -->
+                    <span class="text-xl font-bold text-gray-800">Nusantara Flora</span>
+                </a>
+            </div>
+
             @if (Route::has('login'))
-                <nav class="-mx-3 flex flex-1 justify-end">
+                <nav class="flex flex-1 justify-end space-x-4 items-center">
                     @auth
-                        <x-nav-link :href="route('home.index')">
+                        <x-nav-link :href="route('home.index')" class="text-gray-800">
                             {{ __('Home') }}
                         </x-nav-link>
                         @if(Auth::user()->usertype === 'admin')
                             <!-- Admin Navigation Links -->
-                            <x-nav-link :href="route('produk.index')">
+                            <x-nav-link :href="route('produk.index')" class="text-gray-800">
                                 {{ __('Produk') }}
                             </x-nav-link>
-                            <x-nav-link :href="route('produk.create')">
+                            <x-nav-link :href="route('produk.create')" class="text-gray-800">
                                 {{ __('Tambah') }}
                             </x-nav-link>
                         @else
                             <!-- Regular User Navigation Links -->
-                            <x-nav-link :href="route('keranjang.index')">
+                            <x-nav-link :href="route('keranjang.index')" class="text-gray-800">
                                 {{ __('Keranjang') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('riwayat.index')" class="text-gray-800">
+                                {{ __('Riwayat') }}
                             </x-nav-link>
                         @endif
 
-                        <div class="hidden sm:flex sm:items-center sm:ms-6">
+                        <div class="hidden sm:flex sm:items-center sm:ml-6">
                             <x-dropdown align="right" width="48">
                                 <x-slot name="trigger">
                                     <button
                                         class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                                         <div>{{ Auth::user()->name }}</div>
 
-                                        <div class="ms-1">
+                                        <div class="ml-1">
                                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 20 20">
                                                 <path fill-rule="evenodd"
@@ -60,11 +71,11 @@
                             </x-dropdown>
                         </div>
                     @else
-                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                            <x-nav-link :href="route('login')">
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <x-nav-link :href="route('login')" class="text-gray-800">
                                 {{ __('Login') }}
                             </x-nav-link>
-                            <x-nav-link :href="route('register')">
+                            <x-nav-link :href="route('register')" class="text-gray-800">
                                 {{ __('Register') }}
                             </x-nav-link>
                         </div>
@@ -73,7 +84,7 @@
             @endif
 
             <!-- Hamburger -->
-            <div class="-me-2 flex items-center sm:hidden">
+            <div class="-mr-2 flex items-center sm:hidden">
                 <button @click="open = ! open"
                     class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -92,23 +103,26 @@
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         @if (Route::has('login'))
             @auth
-                <x-nav-link :href="route('home.index')">
+                <x-nav-link :href="route('home.index')" class="text-gray-800">
                     {{ __('Home') }}
                 </x-nav-link>
                 @if(Auth::user()->usertype === 'admin')
-                            <!-- Admin Navigation Links -->
-                            <x-nav-link :href="route('produk.index')">
-                                {{ __('Produk') }}
-                            </x-nav-link>
-                            <x-nav-link :href="route('produk.create')">
-                                {{ __('Tambah') }}
-                            </x-nav-link>
-                        @else
-                            <!-- Regular User Navigation Links -->
-                            <x-nav-link :href="route('keranjang.index')">
-                                {{ __('Keranjang') }}
-                            </x-nav-link>
-                        @endif
+                    <!-- Admin Navigation Links -->
+                    <x-nav-link :href="route('produk.index')" class="text-gray-800">
+                        {{ __('Produk') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('produk.create')" class="text-gray-800">
+                        {{ __('Tambah') }}
+                    </x-nav-link>
+                @else
+                    <!-- Regular User Navigation Links -->
+                    <x-nav-link :href="route('keranjang.index')" class="text-gray-800">
+                        {{ __('Keranjang') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('riwayat.index')" class="text-gray-800">
+                        {{ __('Riwayat') }}
+                    </x-nav-link>
+                @endif
 
                 <div class="pt-4 pb-1 border-t border-gray-200">
                     <div class="px-4">
@@ -117,7 +131,7 @@
                     </div>
 
                     <div class="mt-3 space-y-1">
-                        <x-responsive-nav-link :href="route('profile.edit')">
+                        <x-responsive-nav-link :href="route('profile.edit')" class="text-gray-800">
                             {{ __('Profile') }}
                         </x-responsive-nav-link>
 
@@ -125,7 +139,7 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <x-responsive-nav-link :href="route('logout')"
+                            <x-responsive-nav-link :href="route('logout')" class="text-gray-800"
                                 onclick="event.preventDefault();
                                                     this.closest('form').submit();">
                                 {{ __('Log Out') }}
@@ -135,13 +149,14 @@
                 </div>
             @else
                 <div class="pt-2 pb-3 space-y-1">
-                    <x-nav-link :href="route('login')">
+                    <x-nav-link :href="route('login')" class="text-gray-800">
                         {{ __('Login') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('register')">
+                    <x-nav-link :href="route('register')" class="text-gray-800">
                         {{ __('Register') }}
                     </x-nav-link>
-                @endauth
+                </div>
+            @endauth
         @endif
     </div>
 </nav>
