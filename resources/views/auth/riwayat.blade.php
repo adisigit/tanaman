@@ -3,4 +3,5 @@
     @foreach ($riwayat as $riwayat)
         <p>{{$riwayat->total}}</p>
     @endforeach
+    
 </x-app-layout>

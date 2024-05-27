@@ -21,7 +21,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/keranjang', [KeranjangController::class, 'index'])->name('keranjang.index');
     Route::delete('/keranjang', [KeranjangController::class, 'destroy'])->name('keranjang.destroy');
     Route::post('/buy', [BuyController::class, 'index'])->name('buy.index');
-    Route::get('/buy', [BuyController::class, 'index'])->name('buy.index');
+    Route::get('/buy', [BuyController::class, 'index'])->name('buy1.index');
     Route::post('/riwayat', [BuyController::class, 'store'])->name('buy.store');
     Route::get('/riwayat', [RiwayatController::class, 'index'])->name('riwayat.index');
 });
